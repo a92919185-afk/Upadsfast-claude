@@ -142,7 +142,7 @@ function buildCampaignRow(copy: GeneratedCopy, ctx: CopyContext, today: string):
   r[3]  = "Google search";
   r[4]  = String(Number(ctx.budget) || 10);
   r[5]  = "Daily";
-  // r[6] EU political ads — deixar vazio (Google rejeita qualquer valor de texto)
+  r[6]  = "False";          // EU political ads — "False" = não tem anúncios políticos EU
   r[7]  = "Account-level";
   r[8]  = "Bid equally";
   r[9]  = "All";
