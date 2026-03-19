@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la \"C:/Users/Vinicius/Desktop/Upadsfast - Copia \\(2\\)/\")",
+      "Bash(ls -la \"C:/Users/Vinicius/Desktop/Upadsfast - Copia \\(2\\)/scripts/\")",
+      "Bash(ls -la \"C:/Users/Vinicius/Desktop/Upadsfast - Copia \\(2\\)/web/\")",
+      "Bash(ls -la \"C:/Users/Vinicius/Desktop/Upadsfast - Copia \\(2\\)/examplesexcel/\")",
+      "Bash(ls -la \"C:/Users/Vinicius/Desktop/Upadsfast - Copia \\(2\\)/output/\")",
+      "Bash(ls -la \"C:/Users/Vinicius/Desktop/Upadsfast - Copia \\(2\\)/web/lib/\")",
+      "Bash(ls -la \"C:/Users/Vinicius/Desktop/Upadsfast - Copia \\(2\\)/web/app/api/\")",
+      "Bash(iconv -f UTF-16LE -t UTF-8 \"planilhavalidagoogle - Copia.csv\")",
+      "Bash(node -e \":*)",
+      "Bash(head -5 \"C:/Users/Vinicius/Desktop/Upadsfast - Copia \\(2\\)/examplesexcel/planilhavalidagoogle - Copia.csv\")",
+      "Bash(find \"C:/Users/Vinicius/Desktop/Upadsfast - Copia \\(2\\)/web/src\" -type f)",
+      "Bash(find \"C:/Users/Vinicius/Desktop/Upadsfast - Copia \\(2\\)/web\" -type f -not -path \"*/.git/*\" -not -path \"*/.next/*\" -not -path \"*/node_modules/*\")",
+      "WebFetch(domain:developers.google.com)",
+      "Bash(node -e \"const fs=require\\(''fs''\\); const c=fs.readFileSync\\(''upadsfast-single-account.js'',''utf8''\\); console.log\\(JSON.stringify\\(c.slice\\(5700,6100\\)\\)\\)\")",
+      "Bash(node -e \"const fs=require\\(''fs''\\); const c=fs.readFileSync\\(''upadsfast-single-account.js'',''utf8''\\); const i=c.indexOf\\(''buildTsv''\\); console.log\\(i, JSON.stringify\\(c.slice\\(i-5,i+20\\)\\)\\)\")",
+      "Bash(wc -l \"C:/Users/Vinicius/Desktop/Upadsfast - Copia \\(2\\)/scripts/upadsfast-single-account.js\" \"C:/Users/Vinicius/Desktop/Upadsfast - Copia \\(2\\)/web/scripts/upadsfast-single-account.js\")",
+      "Bash(gh auth:*)"
+    ]
+  }
+}

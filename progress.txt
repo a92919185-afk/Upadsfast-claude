@@ -1,0 +1,23 @@
+## Codebase Patterns
+- Next.js App Router em /web — não usar pages/
+- Templates de copy são DETERMINÍSTICOS (lib/templates.ts) — IA só extrai variáveis
+- /api/extract usa Claude Anthropic SDK (não OpenAI)
+- exceljs para geração de xlsx (não SheetJS) — permite styling por célula
+- Cheerio para scraping best-effort — fallback é texto colado
+- Idiomas suportados: en, pt, es, de, da
+- Naming: campaign = "Search - {PRODUCT} - {COUNTRY}"
+- Limites: headlines ≤30, descriptions ≤90, callouts ≤25, sitelinks text ≤25, sitelink desc ≤35
+
+---
+
+## 2026-03-08 — US-001 a US-013 (build completo)
+- Next.js 16 + Tailwind v4 + shadcn/ui (dark mode forçado via className="dark")
+- shadcn Select.onValueChange retorna `string | null` — usar fallback: `v ?? f.language`
+- NextResponse não aceita Buffer diretamente — usar `new Uint8Array(buffer)`
+- exceljs: writeBuffer() retorna ArrayBufferLike, envolver em Buffer.from()
+- /api/extract: fetch best-effort para URL + Claude Haiku para extração JSON
+- /api/generate: zero IA — só templates determinísticos de lib/templates.ts
+- /api/download: Uint8Array + headers corretos para download automático
+- Build: ✓ Compiled successfully — 5 rotas (/, /_not-found, /api/*)
+- Arquivos criados: lib/templates.ts, lib/excel.ts, components/steps/*.tsx, app/api/*/route.ts
+---
