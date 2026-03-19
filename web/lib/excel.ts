@@ -142,7 +142,7 @@ function buildCampaignRow(copy: GeneratedCopy, ctx: CopyContext, today: string):
   r[3]  = "Google search";
   r[4]  = String(Number(ctx.budget) || 10);
   r[5]  = "Daily";
-  r[6]  = "Doesn't have EU political ads";
+  // r[6] EU political ads — deixar vazio (Google rejeita qualquer valor de texto)
   r[7]  = "Account-level";
   r[8]  = "Bid equally";
   r[9]  = "All";
@@ -151,7 +151,7 @@ function buildCampaignRow(copy: GeneratedCopy, ctx: CopyContext, today: string):
     r[12] = ctx.target_cpa;
   }
   r[17] = today;
-  r[18] = "[]";
+  // r[18] End Date — deixar vazio (sem data de término)
   r[19] = "On";
   r[20] = "[]";
   r[21] = "Optimize for clicks";
@@ -242,8 +242,8 @@ function buildSitelinkRow(
 ): string[] {
   const r = emptyRow();
   r[0]   = copy.campaign;
-  r[17]  = "[]";          // Start Date (no scheduling)
-  r[18]  = "[]";          // End Date
+  // r[17] Start Date — vazio (sem agendamento)
+  // r[18] End Date — vazio (sem data de término)
   r[20]  = "[]";          // Ad Schedule
   r[61]  = sitelinkUrl;   // Final URL
   r[96]  = "[]";          // Upgraded extension
@@ -277,8 +277,8 @@ function buildSnippetRow(
 function buildCalloutRow(copy: GeneratedCopy, callout: string): string[] {
   const r = emptyRow();
   r[0]   = copy.campaign;
-  r[17]  = "[]";          // Start Date
-  r[18]  = "[]";          // End Date
+  // r[17] Start Date — vazio (sem agendamento)
+  // r[18] End Date — vazio (sem data de término)
   r[20]  = "[]";          // Ad Schedule
   r[96]  = "[]";          // Upgraded extension
   r[97]  = "Advertiser";  // Source
