@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY?.trim() ?? "";
+const OPENCODE_API_KEY = process.env.OPENROUTER_API_KEY?.trim() ?? "";
 
 const EXTRACT_PROMPT = `You are a data extraction assistant for Google Ads campaigns.
 Extract the following fields from the offer page text and return ONLY valid JSON:
@@ -26,25 +26,23 @@ Rules:
 - For "country": infer from shipping info, prices, language, domain`;
 
 async function extractFromText(text: string): Promise<Record<string, string>> {
-  const apiKey = OPENROUTER_API_KEY;
+  const apiKey = OPENCODE_API_KEY;
   if (!apiKey) {
     throw new Error(
       "OPENROUTER_API_KEY não configurada. " +
       "Na Vercel: Settings → Environment Variables → adicione OPENROUTER_API_KEY. " +
-      "Localmente: crie web/.env.local com OPENROUTER_API_KEY=sk-or-v1-..."
+      "Localmente: crie web/.env.local com OPENROUTER_API_KEY=sua-chave-opencode-go"
     );
   }
 
-  const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+  const res = await fetch("https://opencode.ai/zen/go/v1/chat/completions", {
     method: "POST",
     headers: {
-      "Authorization": `Bearer ${apiKey.trim()}`,
+      "Authorization": `Bearer ${apiKey}`,
       "Content-Type": "application/json",
-      "HTTP-Referer": "http://localhost:3000",
-      "X-Title": "Upadsfast Web App",
     },
     body: JSON.stringify({
-      model: "minimax/minimax-m2.5",
+      model: "kimi-k2.5",
       messages: [
         {
           role: "user",
@@ -57,13 +55,13 @@ async function extractFromText(text: string): Promise<Record<string, string>> {
 
   if (!res.ok) {
     const errText = await res.text();
-    throw new Error(`OpenRouter API error: ${res.statusText} - ${errText}`);
+    throw new Error(`OpenCode Go API error: ${res.statusText} - ${errText}`);
   }
 
   const data = await res.json();
   const raw = data.choices?.[0]?.message?.content?.trim();
 
-  if (!raw) throw new Error("No response content from OpenRouter");
+  if (!raw) throw new Error("No response content from OpenCode Go");
 
   const jsonMatch = raw.match(/\{[\s\S]*\}/);
   if (!jsonMatch) throw new Error("No JSON found in response");
